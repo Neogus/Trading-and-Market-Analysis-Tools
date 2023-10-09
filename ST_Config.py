@@ -1,5 +1,5 @@
 from datetime import datetime
-from c_config import B_API_KEY, B_API_SECRETKEY, T_API_KEY # Fill-up the c_config file with your keys
+from c_config import B_API_KEY, B_API_SECRETKEY, T_API_KEY, chat_id  # Fill-up the c_config file with your keys
 from binance.client import Client
 import telebot
 import logging
@@ -19,7 +19,7 @@ import_desc = 'max'  # Added description to File
 
 # Modeler, Tester & Trader configuration
 # Warning: To avoid errors Modeler and Tester configuration will share common variables. If the modeler is used first and the tester is used second to test there should be no errors'''
-# Warning: Start/end Date, seg_len and seg_n values should be configured according to the datasets that are being imported and used to avoid errors by going beyond their datetime indexes or timeframes
+# Warning: Start/end Date, seg_len, and seg_n values should be configured according to the datasets that are being imported and used to avoid errors by going beyond their datetime indexes or timeframes
 
 cryptos = ['BTC/BUSD']  # The program will look for this dataset so there should be a corresponding file created by the importer first.
 sample = '1min'  # The Dataset sample defines the granularity if the dataset this value will be used to resample the dataset to a candle of a higher value
@@ -42,7 +42,6 @@ mul = 1  # When creating the lists of the indicator's random parameters this var
 td_start_date = '2023-01-01 0:00:00'  # Starting point for testing in the dataset.
 seg_len = 10080  # Tester will use this value to divide the dataset into portions for independent testing of each. Segment length in minutes (1 week = 10080 , 1 month = 43800)
 seg_n = 8  # The number of time segments that are going to be tested. If the segment length equals a month in time and this number is 6 it will test 6 months starting from the specified date (md_start_date). Make sure not to go beyond the last date of the imported testing dataset to avoid errors.
-chat_id = 'Fill with Telegram Chat ID number'
 asset_precision = 5
 o_type = "MARKET"  #Order type ("LIMIT" or "MARKET"). Sets to trade on the market (Market fee) or on a limit (Maker fee) for lower fees.
 sample_freq = '1m'
