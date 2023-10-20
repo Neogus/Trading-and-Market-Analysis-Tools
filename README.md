@@ -28,3 +28,20 @@ Warning: Once executed correctly the tool will use the whole sum of money that e
 5 - Trader Fix
 
 When the Trader program is stopped it's usually caught in a state where it has bought something or it has taken debt. This program which can be executed from the ST_Trader_Fix.py file is used to place the correspondent orders (sell or repay) in order to go back to the initial state in which the Trader program can be restarted, which means by having all the value in the form of the base asset (BUSD, USDT, etc) and by canceling any debts. 
+
+6 - Legal 
+
+6.1 Proper Use: Gustavo Rabino (hereinafter referred to as "the Developer") provides these programs for your use. The programs are subject to the terms and conditions of the license agreement contained in the accompanying license file. By using these programs, you agree to abide by the terms of this license agreement.
+
+6.2 Improper Use: The Developer does not condone or support the improper use of the Program. Improper use includes, but is not limited to, any use that violates applicable laws or regulations, infringes upon intellectual property rights, or causes harm to individuals or entities.
+
+6.3 No Responsibility: The Developer disclaims all responsibility for any improper use of the Program by any party. You acknowledge that the Developer is not liable for any actions, consequences, or damages resulting from the improper use of these programs.
+
+6.4 License Agreement: To understand the rights and restrictions associated with the use of the Program, you must carefully read and comply with the license agreement contained in the license file accompanying the Program. If you do not agree with the terms of the license agreement, you should not use these programs.
+
+6.5 Contact Information: If you have any questions or concerns regarding these programs, the license agreement, or this disclaimer, please contact the Developer at gusrab@gmail.com
+
+By using the Program, you acknowledge that you have read and understood this disclaimer and the associated license agreement. You agree to use the Program in accordance with the terms and conditions specified in the license agreement.
+
+Gustavo Rabino
+20th of October, 2023
