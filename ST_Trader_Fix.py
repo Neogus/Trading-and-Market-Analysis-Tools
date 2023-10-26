@@ -1,13 +1,12 @@
 import time
 import math
 from binance.client import Client
-from config import B_API_KEY, B_API_SECRETKEY, T3_API_KEY
 from Mfun import *
 
 api_key = B_API_KEY
 api_secret = B_API_SECRETKEY
 client = Client(api_key, api_secret)
-action = 'repay' # Set the action, usually repay or sell
+action = 'repay' # Set the action. To short --> 'margin_buy', sell ---> 'sell', long/buy ---> 'buy', pay debt ---> 'repay'
 asset_precision = 5
 ticker = 'BTCTUSD'
 o_type = "MARKET"
@@ -150,17 +149,16 @@ else:
 
 if action == 'sell':
     amount = round_down(amount, asset_precision)  # Sell
-    order = client.create_margin_order(symbol=ticker, side='SELL', type="LIMIT", timeInForce='GTC', quantity = amount , price=price, sideEffectType='NO_SIDE_EFFECT')
+    order = client.create_margin_order(symbol=ticker, side='SELL', type=o_type, timeInForce='GTC', quantity=amount, price=price, sideEffectType='NO_SIDE_EFFECT')
 elif action == 'repay':
     amount = round_up(amount, asset_precision) # Repay
-    order = client.create_margin_order(symbol=ticker, side='BUY', type="LIMIT", timeInForce='GTC', quantity=amount,
-                                       price=price, sideEffectType='AUTO_REPAY')
+    order = client.create_margin_order(symbol=ticker, side='BUY', type=o_type, timeInForce='GTC', quantity=amount, price=price, sideEffectType='AUTO_REPAY')
 elif action == 'buy':
-    amount = round_down(amount / price, asset_precision)  # Margin Buy / Buy
-    order = client.create_margin_order(symbol=ticker, side='BUY', type="LIMIT", timeInForce='GTC', quantity = amount , price=price, sideEffectType='NO_SIDE_EFFECT')
+    amount = round_down(amount / price, asset_precision)  # Buy
+    order = client.create_margin_order(symbol=ticker, side='BUY', type=o_type, timeInForce='GTC', quantity=amount, price=price, sideEffectType='NO_SIDE_EFFECT')
 elif action == 'margin_buy':
-    amount = round_down(amount / price, asset_precision)  # Margin Buy / Buy
-    order = client.create_margin_order(symbol="ETHBUSD", side='SELL', type="LIMIT", timeInForce='GTC', quantity=0.009,price=price, sideEffectType="MARGIN_BUY")
+    amount = round_down(amount / price, asset_precision)  # Margin Buy
+    order = client.create_margin_order(symbol=ticker, side='SELL', type=o_type, timeInForce='GTC', quantity=amount, price=price, sideEffectType="MARGIN_BUY")
 
 print(amount, price)
 print(info)
@@ -169,9 +167,3 @@ time.sleep(15)
 info = client.get_margin_account()
 print(info)
 exit()
-
-
-
-
-
-
