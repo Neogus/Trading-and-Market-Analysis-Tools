@@ -1,5 +1,4 @@
 from datetime import datetime
-from c_config import B_API_KEY, B_API_SECRETKEY, T_API_KEY, chat_id  # Fill-up the c_config file with your keys
 from binance.client import Client
 import telebot
 import logging
