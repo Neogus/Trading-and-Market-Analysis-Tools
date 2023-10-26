@@ -14,6 +14,7 @@ from ta.trend import MACD, ADXIndicator, AroonIndicator, CCIIndicator, DPOIndica
 from ta.volume import AccDistIndexIndicator, ChaikinMoneyFlowIndicator, EaseOfMovementIndicator, ForceIndexIndicator, \
     MFIIndicator, OnBalanceVolumeIndicator, VolumePriceTrendIndicator, NegativeVolumeIndexIndicator
 from ST_Config import *
+from c_config import *  # Fill-up the c_config file with your keys
 
 ic_index = ['uo_1', 'uo_2', 'uo_3', 'uo_s', 'uo_b',
                      'so_w', 'so_sw', 'so_s', 'so_b', 'ao_1',
