@@ -86,6 +86,28 @@ dfa_0 = [7, 14, 28, 60, 40,
                       # 'sma2_fw', 'ema2_w', 'ema2_fw', 'wma2_w', 'wma2_fw'
 
 
+def place_o(client, amount, action='buy', ticker='BTCTUSD', o_type='MARKET', price=0):
+    if action == 'margin_buy':
+        e_type = "MARGIN_BUY"
+        side = 'SELL'
+    elif action == 'repay':
+        e_type = "AUTO_REPAY"
+        side = 'BUY'
+    elif action == 'buy':
+        e_type = 'NO_SIDE_EFFECT'
+        side = 'BUY'
+    elif action == 'sell':
+        e_type = 'NO_SIDE_EFFECT'
+        side = 'SELL'
+
+    if o_type == "MARKET":
+        order = client.create_margin_order(symbol=ticker, side=side, type=o_type,
+                                           quantity=amount, sideEffectType=e_type)
+    elif o_type == "LIMIT":
+        order = client.create_margin_order(symbol=ticker, side=side, type=o_type, timeInForce='GTC',
+                                           quantity=amount, price=price, sideEffectType=e_type)
+    print('Order place ok')
+    return order
 
 def log_status(dfs, cdf, price_p, stop_r, current_price):
     if int(dfs['Status'][0][0]) in [-1, 0, 3]:
